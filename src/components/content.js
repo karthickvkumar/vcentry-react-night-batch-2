@@ -4,7 +4,7 @@ class ContentComponent extends Component{
 
   render() {
     return (
-       <div>
+       <div className="width-50-per">
          <h1>This is a Content Component</h1>
        </div>
     );

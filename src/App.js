@@ -5,14 +5,18 @@ import FooterComponent from './components/footer';
 import SideBarComponent from './components/sidebar';
 import ContentComponent from './components/content';
 
+import './styles/main.css';
+
 class AppComponent extends Component{
   
   render(){
     return(
       <div>
         <HeaderComponent></HeaderComponent>
-        <SideBarComponent></SideBarComponent>
-        <ContentComponent></ContentComponent>
+        <div className="wrapper">
+          <SideBarComponent></SideBarComponent>
+          <ContentComponent></ContentComponent>
+        </div>
         <FooterComponent></FooterComponent>
       </div>
     );
