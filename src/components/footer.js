@@ -5,7 +5,10 @@ class FooterComponent extends Component{
   render() {
     return (
        <div className="border">
-         <h1>This is a Footer Component</h1>
+         <h1 style={{
+           color : 'white',
+           backgroundColor : 'red'
+         }}>This is a Footer Component</h1>
        </div>
     );
   }
