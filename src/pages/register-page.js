@@ -18,9 +18,26 @@ class RegisterPage extends Component{
   }
 
   onHandleInput = (event) => {
-    this.setState({
-      [event.target.name] : event.target.value
-    })
+    if(event.target.type === "checkbox"){
+      if(event.target.checked){
+        this.state.hobbies.push(event.target.value);
+      }
+      else{
+        const index = this.state.hobbies.findIndex((value, index) => {
+          return value === event.target.value;
+        });
+        this.state.hobbies.splice(index, 1);
+      }
+
+      this.setState({
+        hobbies : this.state.hobbies
+      })
+    }
+    else{
+      this.setState({
+        [event.target.name] : event.target.value
+      })
+    }
   }
 
   onCreateAccount(){
@@ -60,11 +77,11 @@ class RegisterPage extends Component{
            </div>
            <div className="m-bottom-15">
              <label className="label">Select your Hobbies :</label>
-              <input type="checkbox" />Cricket
-              <input type="checkbox" />Chess
-              <input type="checkbox" />Foot Ball
-              <input type="checkbox" />Hockey
-              <input type="checkbox" />Carom
+              <input type="checkbox" value="cricket" name="hobbies" onChange={this.onHandleInput}/>Cricket
+              <input type="checkbox" value="chess" name="hobbies" onChange={this.onHandleInput}/>Chess
+              <input type="checkbox" value="foot ball" name="hobbies" onChange={this.onHandleInput}/>Foot Ball
+              <input type="checkbox" value="hockey" name="hobbies" onChange={this.onHandleInput}/>Hockey
+              <input type="checkbox" value="carom" name="hobbies" onChange={this.onHandleInput}/>Carom
             </div>
            <div className="m-bottom-15">
              <label className="label">Enter your Address :</label>
