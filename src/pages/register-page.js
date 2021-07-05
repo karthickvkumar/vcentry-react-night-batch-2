@@ -5,33 +5,41 @@ class RegisterPage extends Component{
   constructor(props){
     super(props);
     this.state = {
-      firstName : '',
-      lastName : '',
-      email: '',
-      password : '',
-      dateOfBirth : '',
-      gender : '',
-      hobbies : [],
-      address : '',
-      city : '',
-      error_firstName : false,
-      error_lastName : false,
-      error_email: false,
-      error_password: false,
-      error_address: false,
+      register : {
+        firstName : '',
+        lastName : '',
+        email: '',
+        password : '',
+        dateOfBirth : '',
+        gender : '',
+        hobbies : [],
+        address : '',
+        city : '',
+      },
+      error : {
+        firstName : false,
+        lastName : false,
+        email: false,
+        password: false,
+        dateOfBirth : false,
+        gender : false,
+        hobbies : false,
+        address: false,
+        city : false
+      }
     };
   }
 
   onHandleInput = (event) => {
     if(event.target.type === "checkbox"){
       if(event.target.checked){
-        this.state.hobbies.push(event.target.value);
+        this.state.register.hobbies.push(event.target.value);
       }
       else{
-        const index = this.state.hobbies.findIndex((value) => {
+        const index = this.state.register.hobbies.findIndex((value) => {
           return value === event.target.value;
         });
-        this.state.hobbies.splice(index, 1);
+        this.state.register.hobbies.splice(index, 1);
       }
 
       this.setState({
@@ -40,29 +48,25 @@ class RegisterPage extends Component{
     }
     else{
       this.setState({
-        [event.target.name] : event.target.value
+        register : { ...this.state.register, [event.target.name] : event.target.value }
       })
     }
   }
 
   onCreateAccount(){
-    console.log(this.state)
+    console.log(this.state.register)
   }
 
   onFocusInput = (event) => {
-    // console.log('ON FOCUS')
-    const key = "error_" + event.target.name; 
     this.setState({
-      [key] : false
+      error: {...this.state.error,  [event.target.name] : false}
     })
   }
   
   onBlurInput = (event) => {
-    // console.log('ON BLUR')
-    const key = "error_" + event.target.name; 
     if(event.target.value.length == 0){
       this.setState({
-        [key] : true
+        error : {...this.state.error, [event.target.name] : true}
       })
     }
   }
@@ -76,7 +80,7 @@ class RegisterPage extends Component{
            <div className="m-bottom-15">
              <label className="label">Enter Your First Name :</label> 
              <input type="text" className="input" name="firstName" placeholder="Please enter first name.." onChange={this.onHandleInput} autoComplete="off" onFocus={this.onFocusInput} onBlur={this.onBlurInput}/>
-             { this.state.error_firstName && 
+             { this.state.error.firstName && 
                 <div>
                   <span className="error-msg">Please enter a valid first name</span>
                 </div>
@@ -85,7 +89,7 @@ class RegisterPage extends Component{
            <div className="m-bottom-15">
              <label className="label">Enter Your Last Name :</label>
              <input type="text" className="input" name="lastName" placeholder="Please enter last name.." onChange={this.onHandleInput} onFocus={this.onFocusInput} onBlur={this.onBlurInput}/>
-             { this.state.error_lastName && 
+             { this.state.error.lastName && 
                 <div>
                   <span className="error-msg">Please enter a valid last name</span>
                 </div>
@@ -94,7 +98,7 @@ class RegisterPage extends Component{
            <div className="m-bottom-15">
              <label className="label">Enter Your Email ID :</label>
              <input type="text" className="input" name="email" placeholder="Please enter email id.." onChange={this.onHandleInput} onFocus={this.onFocusInput} onBlur={this.onBlurInput}/>
-             { this.state.error_email && 
+             { this.state.error.email && 
                 <div>
                   <span className="error-msg">Please enter a valid email Id </span>
                 </div>
@@ -103,7 +107,7 @@ class RegisterPage extends Component{
            <div className="m-bottom-15">
              <label className="label">Enter Your Password :</label>
              <input type="password" className="input" name="password" placeholder="Please enter password.." onChange={this.onHandleInput} onFocus={this.onFocusInput} onBlur={this.onBlurInput}/>
-             { this.state.error_password && 
+             { this.state.error.password && 
                 <div>
                   <span className="error-msg">Please enter a valid password </span>
                 </div>
@@ -130,7 +134,7 @@ class RegisterPage extends Component{
            <div className="m-bottom-15">
              <label className="label">Enter your Address :</label>
              <textarea className="text-box" name="address" placeholder="Please enter your address.." onChange={this.onHandleInput} onFocus={this.onFocusInput} onBlur={this.onBlurInput}></textarea>
-             { this.state.error_address && 
+             { this.state.error.address && 
                 <div>
                   <span className="error-msg">Please enter a valid address </span>
                 </div>
