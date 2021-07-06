@@ -43,7 +43,7 @@ class RegisterPage extends Component{
       }
 
       this.setState({
-        hobbies : this.state.hobbies
+        hobbies : this.state.register.hobbies
       })
     }
     else{
@@ -55,6 +55,28 @@ class RegisterPage extends Component{
 
   onCreateAccount(){
     console.log(this.state.register)
+
+    for(let key in this.state.register){
+      if(key === 'hobbies'){
+        if(this.state.register.hobbies.length === 0){
+          this.state.error.hobbies = true;
+        }
+        else{
+          this.state.error.hobbies = false;
+        }
+      }
+      else if(this.state.register[key] === ''){
+        this.state.error[key] = true;
+      }
+      else{
+        this.state.error[key] = false;
+      } 
+    }
+
+    this.setState({
+      error : this.state.error
+    })
+
   }
 
   onFocusInput = (event) => {
@@ -116,12 +138,22 @@ class RegisterPage extends Component{
            <div className="m-bottom-15">
              <label className="label">Select your D.O.B :</label>
              <input type="date" name="dateOfBirth" className="input" onChange={this.onHandleInput}/>
+             { this.state.error.dateOfBirth && 
+                <div>
+                  <span className="error-msg">Please select a valid date of birth</span>
+                </div>
+             }
            </div>
            <div className="m-bottom-15">
              <label className="label">Select your Gender :</label>
              <input type="radio" name="gender" value="male" onChange={this.onHandleInput}/>Male
              <input type="radio" name="gender" value="female" onChange={this.onHandleInput}/>Female
              <input type="radio" name="gender" value="do not want to specify" onChange={this.onHandleInput}/>Others
+             { this.state.error.gender && 
+                <div>
+                  <span className="error-msg">Please select a valid gender</span>
+                </div>
+             }
            </div>
            <div className="m-bottom-15">
              <label className="label">Select your Hobbies :</label>
@@ -130,6 +162,11 @@ class RegisterPage extends Component{
               <input type="checkbox" value="foot ball" name="hobbies" onChange={this.onHandleInput}/>Foot Ball
               <input type="checkbox" value="hockey" name="hobbies" onChange={this.onHandleInput}/>Hockey
               <input type="checkbox" value="carom" name="hobbies" onChange={this.onHandleInput}/>Carom
+              { this.state.error.hobbies && 
+                <div>
+                  <span className="error-msg">Please select a valid hobbies</span>
+                </div>
+             }
             </div>
            <div className="m-bottom-15">
              <label className="label">Enter your Address :</label>
@@ -150,6 +187,11 @@ class RegisterPage extends Component{
                <option value="Pune - Pu">Pune</option>
                <option value="Cochin - KO">Cochin</option>
              </select>
+             { this.state.error.city && 
+                <div>
+                  <span className="error-msg">Please select a valid city</span>
+                </div>
+             }
            </div>
            <div>
              <button onClick={() => { this.onCreateAccount() }}>Create My Account</button>
