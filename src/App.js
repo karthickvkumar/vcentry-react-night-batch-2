@@ -13,7 +13,7 @@ class AppComponent extends Component{
     return(
       <BrowserRouter>
         <Switch>
-          <Route path="/login" component={LoginPage}></Route>
+          <Route path="/" exact={true} component={LoginPage}></Route>
           <Route path="/register" component={RegisterPage}></Route>
           <Route path="/home" component={HomePage}></Route>
         </Switch>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class RegisterPage extends Component{
   
@@ -197,7 +198,7 @@ class RegisterPage extends Component{
              <button onClick={() => { this.onCreateAccount() }}>Create My Account</button>
            </div>
          </div>
-        
+        <NavLink to="/home">Go to Home Page</NavLink>
        </div>
     );
   }
