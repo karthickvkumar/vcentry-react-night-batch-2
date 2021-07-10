@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 
 class LoginPage extends Component {
 
@@ -64,6 +65,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <button onClick={() => this.onLogin()}>Login</button>
+            <NavLink to="/mail">Go to Mail Box Page</NavLink>
           </div>
         </div>
       </div>

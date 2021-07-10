@@ -65,3 +65,27 @@ body{
 .error-msg{
   color: red;
 }
+
+.main{
+  height: 98vh;
+}
+
+.header{
+  border: 2px solid;
+    height: 10%;
+}
+.body{
+  border: 2px solid;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar{
+  border: 2px solid red;
+  width: 20%;
+}
+.content{
+  border: 2px solid blue;
+    width: 80%;
+}
