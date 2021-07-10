@@ -65,7 +65,7 @@ class LoginPage extends Component {
           </div>
           <div>
             <button onClick={() => this.onLogin()}>Login</button>
-            <NavLink to="/mail">Go to Mail Box Page</NavLink>
+            <NavLink to="/mail/inbox">Go to Mail Box Page</NavLink>
           </div>
         </div>
       </div>
