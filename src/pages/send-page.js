@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class SendPage extends Component {
 
@@ -20,6 +21,24 @@ class SendPage extends Component {
 
   onCreateUser(){
     console.log(this.state.createUser);
+    // const url = "https://reqres.in/api/users";
+
+    // axios.post(url, this.state.createUser)
+    //     .then((response) => {
+    //       console.log(response)
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+
+    const url = "https://reqres.in/api/users/2";
+    axios.put(url, this.state.createUser)
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
   }
 
   render() {
