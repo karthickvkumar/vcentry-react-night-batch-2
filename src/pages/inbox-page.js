@@ -10,6 +10,10 @@ class InboxPage extends Component {
     }
   }
 
+  componentDidMount(){
+    this.listUser();
+  }
+
   listUser(){
     const url = "https://reqres.in/api/users?page=2";
     axios.get(url)
