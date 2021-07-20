@@ -5,6 +5,7 @@ import InboxPage from './inbox-page';
 import SendPage from './send-page';
 import TrashPage from './trash-page';
 import LifeCycle from './life-cycle';
+import ParentPage from './parent-page';
 
 class MailBoxPage extends Component {
   render() {
@@ -18,6 +19,7 @@ class MailBoxPage extends Component {
                 <NavLink to="/mail/sent" className="nav-btn" activeClassName="active-btn">Sent</NavLink>
                 <NavLink to="/mail/trash" className="nav-btn" activeClassName="active-btn">Trash</NavLink>
                 <NavLink to="/mail/cycle" className="nav-btn" activeClassName="active-btn">Life Cycle</NavLink>
+                <NavLink to="/mail/parent" className="nav-btn" activeClassName="active-btn">Parent</NavLink>
             </div>
             <div className="content">
               <Switch>
@@ -25,6 +27,7 @@ class MailBoxPage extends Component {
                 <Route path="/mail/sent" component={SendPage}></Route>
                 <Route path="/mail/trash" component={TrashPage}></Route>
                 <Route path="/mail/cycle" component={LifeCycle}></Route>
+                <Route path="/mail/parent" component={ParentPage}></Route>
               </Switch>
             </div>
           </div>
