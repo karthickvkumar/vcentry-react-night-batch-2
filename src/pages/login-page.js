@@ -48,6 +48,10 @@ class LoginPage extends Component {
     this.props.history.push('/home');
   }
 
+  goToMailBoxPage(){
+    this.props.history.push("/mail/inbox", this.state.login);
+  }
+
   render() {
     return (
       <div>
@@ -66,6 +70,9 @@ class LoginPage extends Component {
           <div>
             <button onClick={() => this.onLogin()}>Login</button>
             <NavLink to="/mail/inbox">Go to Mail Box Page</NavLink>
+          </div>
+          <div>
+            <button onClick={() => this.goToMailBoxPage()}>Mail Box Page</button>
           </div>
         </div>
       </div>

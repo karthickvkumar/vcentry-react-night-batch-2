@@ -9,10 +9,15 @@ import ParentPage from './parent-page';
 
 class MailBoxPage extends Component {
   render() {
+    
+    console.log(this.props.location.state)
+    const data = this.props.location.state;
     return (
       <BrowserRouter>
         <div className="main">
-          <div className="header"></div>
+          <div className="header">
+            {data.email}
+          </div>
           <div className="body">
             <div className="sidebar">
                 <NavLink to="/mail/inbox" className="nav-btn" activeClassName="active-btn">Inbox</NavLink>

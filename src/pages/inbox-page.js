@@ -43,9 +43,12 @@ class InboxPage extends Component {
       )
     });
 
-    console.log(users)
+    console.log(this.props.location.state)
+    const data = this.props.location.state;
+
     return (
       <div>
+        <h1>The user name is {data.email}</h1>
         <h1>This is a INBOX PAGE</h1>
         <button onClick={() => this.listUser()}>List User</button>
         <table>

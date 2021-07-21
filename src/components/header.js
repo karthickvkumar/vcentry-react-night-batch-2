@@ -13,6 +13,7 @@ class HeaderComponent extends Component{
       }
     }
 
+
     return(
       <div className="border" style={styles.height}>
         <h1 style={styles.bgColor}>This is a Header Component</h1>
